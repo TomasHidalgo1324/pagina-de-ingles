@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ejercicios de Futuro y Condicionales</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(to right, #f0f4ff, #e8f0fe);
+      padding: 40px;
+      color: #2c3e50;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.8em;
+      margin-bottom: 40px;
+      color: #2d3436;
+    }
+
+    h2 {
+      color: #1e3799;
+      border-left: 5px solid #1e3799;
+      padding-left: 10px;
+      margin-top: 40px;
+      font-size: 1.8em;
+    }
+
+    .exercise {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 60%;
+      padding: 10px;
+      border: 2px solid #ced6e0;
+      border-radius: 8px;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-left: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0c7cd5;
+    }
+
+    .feedback {
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    .correct {
+      color: #27ae60;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .header-img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    @media screen and (max-width: 600px) {
+      input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc" alt="English Learning" class="header-img" />
+    <h1>Ejercicios de Inglés: Futuro y Condicionales</h1>
+
+    <h2>Parte 1: Mixed Future</h2>
+    <div id="future-exercises"></div>
+
+    <h2>Parte 2: Conditionals 2 and 3</h2>
+    <div id="conditionals-exercises"></div>
+  </div>
+
+  <script>
+    const futureExercises = [{ sentence: "I (visit) my grandparents this weekend.", answer: "am going to visit", explanation: "Se usa 'going to' porque hay una intención o plan previo." },
+      { sentence: "They (travel) to Spain next summer.", answer: "will travel", explanation: "'Will' se usa para decisiones tomadas en el momento o predicciones." },
+      { sentence: "By this time tomorrow, she (fly) to Rome.", answer: "will be flying", explanation: "Es una acción en progreso en el futuro." },
+      { sentence: "The movie (start) at 9 PM.", answer: "starts", explanation: "Se usa presente simple para horarios fijos." },
+      { sentence: "We (have) dinner with them tonight.", answer: "are having", explanation: "Se usa present continuous para planes definidos en el futuro cercano." },
+      { sentence: "I (finish) my homework tonight.", answer: "am going to finish", explanation: "Se usa 'going to' porque ya hay una intención clara." },
+      { sentence: "We (see) a play at the theatre next Friday.", answer: "are seeing", explanation: "Se usa presente continuo para un plan definido." },
+      { sentence: "The train (leave) at 6 p.m.", answer: "leaves", explanation: "Se usa presente simple para horarios programados." },
+      { sentence: "He (attend) the meeting at 9 o’clock.", answer: "is attending", explanation: "Presente continuo para un evento planeado." },
+      { sentence: "Look at those clouds! It (rain).", answer: "is going to rain", explanation: "Hay evidencia en el presente, se usa 'going to'." },
+      { sentence: "I think she (be) late.", answer: "will be", explanation: "Predicción basada en opinión." },
+      { sentence: "They (not come) to the party tomorrow.", answer: "are not coming", explanation: "Presente continuo con valor de futuro (plan definido)." },
+      { sentence: "The movie (start) at 8 PM.", answer: "starts", explanation: "Presente simple porque es un horario fijo." },
+      { sentence: "By this time next week, I (relax) on the beach.", answer: "will be relaxing", explanation: "Future continuous: acción en progreso en el futuro." },
+      { sentence: "She (visit) her grandparents this weekend.", answer: "is visiting", explanation: "Plan definido (presente continuo con valor de futuro)." },
+      { sentence: "They (travel) to Japan next year.", answer: "are going to travel", explanation: "Plan a futuro con 'going to'." },
+      { sentence: "I'm sure you (pass) the test.", answer: "will pass", explanation: "Predicción sin evidencia concreta." },
+      { sentence: "We (have) lunch at the new café later.", answer: "are having", explanation: "Plan acordado (presente continuo con valor de futuro)." },
+      { sentence: "The concert (begin) at 7 sharp.", answer: "begins", explanation: "Presente simple para horarios establecidos." },
+      { sentence: "Be careful! You (drop) that glass!", answer: "are going to drop", explanation: "Hay evidencia presente de lo que va a pasar." },
+      { sentence: "She (not attend) the meeting tomorrow.", answer: "is not attending", explanation: "Presente continuo para un plan que no se hará." },
+      { sentence: "At this time tomorrow, we (fly) over the Alps.", answer: "will be flying", explanation: "Future continuous: acción en proceso." },
+      { sentence: "He (not finish) the project on time.", answer: "will not finish", explanation: "Predicción futura." },
+      { sentence: "We (have) a barbecue on Sunday.", answer: "are having", explanation: "Presente continuo como plan fijo." },
+      { sentence: "I (go) to the doctor this afternoon.", answer: "am going", explanation: "Plan intencionado con 'going to'." },
+      { sentence: "She (not come) because she's busy.", answer: "is not coming", explanation: "Presente continuo con intención clara." },
+      { sentence: "He (graduate) next year.", answer: "will graduate", explanation: "Hecho futuro simple sin evidencia directa." },
+      { sentence: "What time (the film/start)?", answer: "does the film start", explanation: "Presente simple para horarios." },
+      { sentence: "They (move) to Canada next month.", answer: "are moving", explanation: "Plan personal ya decidido." },
+      { sentence: "Watch out! You (hit) the car!", answer: "are going to hit", explanation: "Evidencia de una acción inminente." },
+      { sentence: "The plane (depart) at noon.", answer: "departs", explanation: "Horario programado (presente simple)." },
+      { sentence: "I (not do) anything tonight.", answer: "am not doing", explanation: "Presente continuo: plan definido." },
+      { sentence: "She (take) a gap year before university.", answer: "is going to take", explanation: "Decisión planificada." },
+      { sentence: "This time tomorrow, I (lie) on the beach.", answer: "will be lying", explanation: "Future continuous: acción en desarrollo." },
+      { sentence: "He (not come) with us next week.", answer: "is not coming", explanation: "Plan conocido." },
+      { sentence: "You (like) the movie. It's great!", answer: "will like", explanation: "Predicción basada en opinión." },
+      { sentence: "They (build) a new mall in this area.", answer: "are going to build", explanation: "Plan que ya se conoce." },
+      { sentence: "We (meet) her at the café at 5.", answer: "are meeting", explanation: "Presente continuo: plan." },
+      { sentence: "He (be) 18 next month.", answer: "will be", explanation: "Hecho futuro." },
+      { sentence: "It (snow) tomorrow, according to the forecast.", answer: "is going to snow", explanation: "Predicción con base." },
+      { sentence: "The store (open) at 10 am.", answer: "opens", explanation: "Horario fijo." },
+      { sentence: "I (visit) my uncle this weekend.", answer: "am going to visit", explanation: "Intención futura." },
+      { sentence: "What (you/do) this evening?", answer: "are you doing", explanation: "Presente continuo con intención." },
+      { sentence: "We (stay) at a hotel tonight.", answer: "are staying", explanation: "Plan definido." },
+      { sentence: "She (study) medicine at university.", answer: "is going to study", explanation: "Decisión ya tomada." },
+      { sentence: "The show (begin) at 9 PM sharp.", answer: "begins", explanation: "Presente simple para horarios." },
+      { sentence: "I (not go) to the party.", answer: "am not going", explanation: "Plan definido de no asistir." },
+      { sentence: "They (arrive) soon.", answer: "will arrive", explanation: "Predicción simple." },
+      { sentence: "We (celebrate) our anniversary in Paris.", answer: "are going to celebrate", explanation: "Decisión anticipada." },
+      { sentence: "He (work) late tonight.", answer: "is working", explanation: "Presente continuo: plan." },
+      { sentence: "She (not call) you back.", answer: "will not call", explanation: "Predicción." }];
+    const conditionalsExercises = [{ sentence: "If I had more money, I (buy) a new car.", answer: "would buy", explanation: "Condicional 2: situación hipotética en presente." },
+      { sentence: "If he had studied, he (pass) the test.", answer: "would have passed", explanation: "Condicional 3: situación irreal en el pasado." },
+      { sentence: "She (travel) more if she had the time.", answer: "would travel", explanation: "Condicional 2: hipótesis presente o futura." },
+      { sentence: "If they had called me, I (go) with them.", answer: "would have gone", explanation: "Condicional 3: resultado pasado irreal." },
+      { sentence: "If we lived closer, we (visit) you more often.", answer: "would visit", explanation: "Condicional 2: situación irreal en presente." },
+      { sentence: "He (not fail) if he had prepared better.", answer: "would not have failed", explanation: "Condicional 3: reproche o crítica de una acción pasada." },
+      { sentence: "If I were you, I (not do) that.", answer: "would not do", explanation: "Condicional 2: consejo hipotético." },
+      { sentence: "If she had woken up earlier, she (catch) the bus.", answer: "would have caught", explanation: "Condicional 3: acción pasada que no ocurrió." },
+      { sentence: "They (buy) a bigger house if they earned more.", answer: "would buy", explanation: "Condicional 2: hipótesis en presente." },
+      { sentence: "If you had told me, I (help) you.", answer: "would have helped", explanation: "Condicional 3: situación hipotética en pasado." },
+      { sentence: "If I (be) you, I would apologize.", answer: "were", explanation: "Condicional 2 con 'were' para todas las personas." },
+      { sentence: "He (go) to the party if he had been invited.", answer: "would have gone", explanation: "Condicional 3: resultado irreal en pasado." },
+      { sentence: "If we had left earlier, we (arrive) on time.", answer: "would have arrived", explanation: "Condicional 3: situación pasada hipotética." },
+      { sentence: "If she spoke French, she (work) in Paris.", answer: "would work", explanation: "Condicional 2: presente/futuro hipotético." },
+      { sentence: "If I had seen you, I (say) hello.", answer: "would have said", explanation: "Condicional 3: pasado irreal." },
+      { sentence: "They (travel) more if they didn't have children.", answer: "would travel", explanation: "Condicional 2: situación hipotética presente." },
+      { sentence: "If you had listened to me, you (not get) lost.", answer: "would not have gotten", explanation: "Condicional 3: consecuencia en pasado." },
+      { sentence: "If I (have) more free time, I would learn a new language.", answer: "had", explanation: "Condicional 2: situación hipotética." },
+      { sentence: "If she had studied harder, she (pass) the exam.", answer: "would have passed", explanation: "Condicional 3." },
+      { sentence: "He (buy) a new computer if he saved enough money.", answer: "would buy", explanation: "Condicional 2." }];
+
+    function createExercises(containerId, exercises) {
+      const container = document.getElementById(containerId);
+      exercises.forEach((ex, i) => {
+        const div = document.createElement("div");
+        div.className = "exercise";
+        div.innerHTML = `
+          <label>${i + 1}. ${ex.sentence}</label>
+          <input type="text" id="input-${containerId}-${i}" placeholder="Tu respuesta">
+          <button onclick="checkAnswer('${containerId}', ${i})">Verificar</button>
+          <div id="feedback-${containerId}-${i}" class="feedback"></div>`;
+        container.appendChild(div);
+      });
+    }
+
+    function checkAnswer(containerId, index) {
+      const input = document.getElementById(`input-${containerId}-${index}`);
+      const feedback = document.getElementById(`feedback-${containerId}-${index}`);
+      const exercise = containerId === 'future-exercises' ? futureExercises[index] : conditionalsExercises[index];
+      const userAnswer = input.value.trim().toLowerCase();
+      const correctAnswer = exercise.answer.toLowerCase();
+
+      if (userAnswer === correctAnswer) {
+        feedback.innerHTML = "¡Correcto!";
+        feedback.className = "feedback correct";
+      } else {
+        feedback.innerHTML = `Incorrecto. La respuesta es: <strong>${exercise.answer}</strong>. ${exercise.explanation}`;
+        feedback.className = "feedback";
+      }
+    }
+
+    createExercises("future-exercises", futureExercises);
+    createExercises("conditionals-exercises", conditionalsExercises);
+  </script>
+</body>
+</html>
